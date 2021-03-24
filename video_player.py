@@ -1,11 +1,3 @@
-'''
-Description: encoding:utf-8
-Author: YoungYuan
-Date: 2021-02-28 20:08:53
-LastEditTime: 2021-03-24 12:04:17
-LastEditors: YoungYuan
-EditorTool: Vscode
-'''
 import re
 import tkinter as tk
 from tkinter import messagebox as msgbox
