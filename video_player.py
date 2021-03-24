@@ -72,3 +72,4 @@ class Application(tk.Tk):  # 继承tkinter类
 if __name__ == '__main__':
     app = Application()
     app.mainloop()
+    
