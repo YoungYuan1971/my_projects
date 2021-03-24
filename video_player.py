@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import messagebox as msgbox
 from urllib import parse
 import webbrowser
-
+import time
 
 class Application(tk.Tk):  # 继承tkinter类
     def __init__(self):  # 魔术方法，重构函数
