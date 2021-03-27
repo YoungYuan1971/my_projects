@@ -1,5 +1,5 @@
-from pywebio.input import input, FLOAT
-from pywebio.output import put_text
+from pywebio.input import *
+from pywebio.output import *
 
 
 def bmi(height, weight):  # 计算BMI
