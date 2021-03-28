@@ -4,7 +4,6 @@ from pywebio.output import *
 
 def bmi(height, weight):  # 计算BMI
     bmi_value = weight / (height / 100) ** 2
-
     top_status = [(14.9, '极瘦'), (18.4, '偏瘦'),
                   (22.9, '正常'), (27.5, '过重'),
                   (40.0, '肥胖'), (float('inf'), '非常肥胖')]
