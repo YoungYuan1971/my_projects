@@ -10,15 +10,15 @@ class Application(tk.Tk):  # 继承tkinter类
         super().__init__()  # 初始化基类
         self.title("视频解析助手 @Author: YoungYuan")
         # 设置窗体的宽、高
-        w = 610
-        h = 145
+        window_width = 610
+        window_height = 145
         # 获取屏幕宽、高
-        ws = self.winfo_screenwidth()
-        hs = self.winfo_screenheight()
-        # 计算 x, y 位置，在屏幕上居中
-        x = int((ws / 2) - (w / 2))
-        y = int((hs / 2) - (h / 2))
-        self.geometry(f'{w}x{h}+{x}+{y}')
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        # 计算窗口在屏幕上居中的坐标位置
+        x = int((screen_width / 2) - (window_width / 2))
+        y = int((screen_height / 2) - (window_height / 2))
+        self.geometry(f'{window_width}x{window_height}+{x}+{y}')
         self.resizable(0, 0)
         self.url = tk.StringVar()
         self.v = tk.IntVar()
