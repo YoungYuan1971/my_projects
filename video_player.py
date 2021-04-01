@@ -15,10 +15,10 @@ class Application(tk.Tk):  # 继承tkinter类
         # 获取屏幕宽、高
         ws = self.winfo_screenwidth()
         hs = self.winfo_screenheight()
-        # 计算 x, y 位置
-        x = (ws / 2) - (w / 2)
-        y = (hs / 2) - (h / 2)
-        self.geometry('%dx%d+%d+%d' % (w, h, x, y))
+        # 计算 x, y 位置，在屏幕上居中
+        x = int((ws / 2) - (w / 2))
+        y = int((hs / 2) - (h / 2))
+        self.geometry(f'{w}x{h}+{x}+{y}')
         self.resizable(0, 0)
         self.url = tk.StringVar()
         self.v = tk.IntVar()
