@@ -66,7 +66,7 @@ class Application(tk.Tk):  # 继承tkinter类
             webbrowser.open(API + play_url)
             self.quit()
         else:
-            msgbox.showerror(title="错误", message="视频地址无效，请重新输入！")
+            msgbox.showwarning(title="错误", message="视频地址无效，请重新输入！")
 
 
 if __name__ == '__main__':
