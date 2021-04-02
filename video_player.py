@@ -16,8 +16,8 @@ class Application(tk.Tk):  # 继承tkinter类
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
         # 计算窗口在屏幕上居中的坐标位置
-        x = int((screen_width / 2) - (window_width / 2))
-        y = int((screen_height / 2) - (window_height / 2))
+        x = int((screen_width - window_width) / 2)
+        y = int((screen_height - window_height) / 2)
         self.geometry(f'{window_width}x{window_height}+{x}+{y}')
         self.resizable(0, 0)
         self.url = tk.StringVar()
