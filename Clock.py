@@ -5,7 +5,7 @@ import tkinter as tk
 class Clock(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title('Clock')
+        self.title('Electronic Clock @Designer: YoungYuan')
         self.resizable(0, 0)
         self.time_text = ""
         self.lbl = tk.Label(
