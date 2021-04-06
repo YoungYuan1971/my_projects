@@ -11,7 +11,7 @@ class Clock(tk.Tk):
         self.lbl = tk.Label(
             self,
             text=self.time_text,
-            font=("ds-digital", 80),
+            font=("ds-digital", 60),
             background="black",
             foreground="cyan"
         )
