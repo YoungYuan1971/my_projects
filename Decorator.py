@@ -19,4 +19,5 @@ def sell():
 
 
 if __name__ == '__main__':
+    # buy()
     sell()
