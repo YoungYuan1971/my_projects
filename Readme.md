@@ -4,3 +4,4 @@
 ###### 3. 身体质量指数 BMI Calculator
 ###### 4. 装饰器的使用 Decorator
 ###### 5. 冒泡排序 Bubble Sort
+###### 6. 电子时钟 Clock
