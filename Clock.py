@@ -12,8 +12,8 @@ class Clock(tk.Tk):
             self,
             text=self.time_text,
             font=("ds-digital", 60),
-            background="black",
-            foreground="cyan"
+            background="#000000",
+            foreground="#4997cc"
         )
 
         self.lbl.pack()
