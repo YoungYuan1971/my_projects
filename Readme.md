@@ -6,3 +6,4 @@
 ###### 5. 冒泡排序 Bubble Sort
 ###### 6. 电子时钟 Clock
 ###### 7. Python加速器 Python Accelerator
+###### 8. 异步测试 Test_async
