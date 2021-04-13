@@ -5,3 +5,4 @@
 ###### 4. 装饰器的使用 Decorator
 ###### 5. 冒泡排序 Bubble Sort
 ###### 6. 电子时钟 Clock
+###### 7. Python加速器 Python Accelerator
