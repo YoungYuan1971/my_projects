@@ -38,6 +38,6 @@ if __name__ == '__main__':
                 tasks.append(pool.submit(download_one_page, url))
             
             for _ in tqdm(futures.as_completed(tasks), total=len(tasks)):
-                continue
+                pass
 
         print('下载完成！')
