@@ -1,18 +1,20 @@
-# 单线程
+# 单线程  21.81
 
 import requests
 from lxml import etree
 import csv
 from tqdm import tqdm
 import time
+import random
+import json
 
 
-def download_one_page(url):
+def download_one_page(url, proxy):
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_3) "
                       "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
     }
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, proxies=proxy)
     response.encoding = 'utf-8'
     html = etree.HTML(response.text)
     trs = html.xpath("//table[@class='hq_table']//tr")
@@ -31,8 +33,10 @@ if __name__ == '__main__':
         base_url = 'http://www.xinfadi.com.cn/marketanalysis/0/list/{}.shtml'
         print('正在下载......')
         for page in tqdm(range(1, 101)):
+            with open('../Proxies_Pool.json', 'r', encoding='utf-8') as fp:
+                proxy = random.choice(json.load(fp))
             url = base_url.format(page)
-            download_one_page(url)
+            download_one_page(url, proxy)
     print('下载完成！')
     t2 = time.time()
     print(t2-t1)
