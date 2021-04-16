@@ -6,16 +6,16 @@
 import json
 import math
 import os
-import time
 import pandas as pd
 import requests
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
 from concurrent import futures
 import csv
+import random
 
 
-def web_get(page):
+def web_get(page, proxy):
     headers = {
         'Connection': 'keep-alive',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
@@ -43,12 +43,12 @@ def web_get(page):
     )
     session = requests.Session()
     response = session.get('http://67.push2.eastmoney.com/api/qt/clist/get', headers=headers,
-                           params=params, verify=False)
+                           params=params, verify=False, proxies=proxy)
     return response.json()
 
 
-def date_save(page):
-    response = web_get(page)
+def date_save(page, proxy):
+    response = web_get(page, proxy)
     datas = response['data']['diff']
 
     for data in datas:
@@ -71,15 +71,20 @@ def date_save(page):
 
 
 def main():
-    html = web_get(1)  # 先请求第一页，获取数据总数，以便统计页数
+    with open('./Proxies_Pool.json', 'r', encoding='utf-8') as fp:
+        proxies_pool = json.load(fp)
+        proxy = random.choice(proxies_pool)
+    html = web_get(1, proxy)  # 先请求第一页，获取数据总数，以便统计页数
     total = html['data']['total']
     pages = math.ceil(int(total) / 20)  # 向上取整
     tasks = []
     with ThreadPoolExecutor(30) as pool:
         for page in range(1, pages+1):
-            # if page % 50 == 0:
-            #     time.sleep(3)
-            tasks.append(pool.submit(date_save, page))
+            with open('./Proxies_Pool.json', 'r', encoding='utf-8') as fp:
+                proxies_pool = json.load(fp)
+                proxy = random.choice(proxies_pool)
+
+            tasks.append(pool.submit(date_save, page, proxy))
 
         for _ in tqdm(futures.as_completed(tasks), total=len(tasks)):
             pass
