@@ -5,6 +5,7 @@ import aiohttp
 import aiofiles
 from lxml import etree
 import csv
+from tqdm import tqdm
 
 
 async def download_one_page(url):
@@ -30,6 +31,9 @@ async def main():
     for page in range(1, 101):
         url = base_url.format(page)
         tasks.append(asyncio.create_task(download_one_page(url)))
+
+    for task in tqdm(asyncio.as_completed(tasks), total=len(tasks)):
+        await task
 
     await asyncio.wait(tasks)
     print('下载完成！')

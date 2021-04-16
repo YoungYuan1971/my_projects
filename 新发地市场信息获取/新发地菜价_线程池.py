@@ -4,6 +4,8 @@ import requests
 from lxml import etree
 import csv
 from concurrent.futures import ThreadPoolExecutor
+from concurrent import futures
+from tqdm import tqdm
 
 
 def download_one_page(url):
@@ -28,8 +30,14 @@ if __name__ == '__main__':
         write_data = csv.writer(f)
         base_url = 'http://www.xinfadi.com.cn/marketanalysis/0/list/{}.shtml'
         print('正在下载......')
+        tasks=[]
+        results=[]
         with ThreadPoolExecutor(30) as pool:
             for page in range(1, 101):
                 url = base_url.format(page)
-                pool.submit(download_one_page, url)
+                tasks.append(pool.submit(download_one_page, url))
+            
+            for _ in tqdm(futures.as_completed(tasks), total=len(tasks)):
+                continue
+
         print('下载完成！')
