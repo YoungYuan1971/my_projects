@@ -6,6 +6,7 @@ import aiofiles
 from lxml import etree
 import csv
 from tqdm import tqdm
+import time
 
 
 async def download_one_page(url):
@@ -40,8 +41,11 @@ async def main():
 
 
 if __name__ == '__main__':
+    t1 = time.time()
     with open('新发地菜价_协程.csv', mode='w', encoding='utf-8', newline='') as f:
         fieldnames = ['品名', '最低价', '平均价', '最高价', '规格', '单位', '发布日期']
         write_header = csv.DictWriter(f, fieldnames=fieldnames)
         write_header.writeheader()
     asyncio.run(main())
+    t2 = time.time()
+    print(t2-t1)

@@ -6,6 +6,7 @@ import csv
 from concurrent.futures import ThreadPoolExecutor
 from concurrent import futures
 from tqdm import tqdm
+import time
 
 
 def download_one_page(url):
@@ -23,6 +24,7 @@ def download_one_page(url):
 
 
 if __name__ == '__main__':
+    t1 = time.time()
     with open('新发地菜价_线程池.csv', mode='w', encoding='utf-8', newline='') as f:
         fieldnames = ['品名', '最低价', '平均价', '最高价', '规格', '单位', '发布日期']
         write_header = csv.DictWriter(f, fieldnames=fieldnames)
@@ -30,14 +32,16 @@ if __name__ == '__main__':
         write_data = csv.writer(f)
         base_url = 'http://www.xinfadi.com.cn/marketanalysis/0/list/{}.shtml'
         print('正在下载......')
-        tasks=[]
-        results=[]
+        tasks = []
+        results = []
         with ThreadPoolExecutor(30) as pool:
             for page in range(1, 101):
                 url = base_url.format(page)
                 tasks.append(pool.submit(download_one_page, url))
-            
+
             for _ in tqdm(futures.as_completed(tasks), total=len(tasks)):
                 pass
 
         print('下载完成！')
+        t2 = time.time()
+        print(t2-t1)

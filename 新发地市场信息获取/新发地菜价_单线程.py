@@ -4,6 +4,7 @@ import requests
 from lxml import etree
 import csv
 from tqdm import tqdm
+import time
 
 
 def download_one_page(url):
@@ -21,6 +22,7 @@ def download_one_page(url):
 
 
 if __name__ == '__main__':
+    t1 = time.time()
     with open('新发地菜价_单线程.csv', mode='w', encoding='utf-8', newline='') as f:
         fieldnames = ['品名', '最低价', '平均价', '最高价', '规格', '单位', '发布日期']
         write_header = csv.DictWriter(f, fieldnames=fieldnames)
@@ -32,3 +34,5 @@ if __name__ == '__main__':
             url = base_url.format(page)
             download_one_page(url)
     print('下载完成！')
+    t2 = time.time()
+    print(t2-t1)
