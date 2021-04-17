@@ -35,7 +35,6 @@ if __name__ == '__main__':
         base_url = 'http://www.xinfadi.com.cn/marketanalysis/0/list/{}.shtml'
         print('正在下载......')
         tasks = []
-        results = []
         with ThreadPoolExecutor(30) as pool:
             for page in range(1, 101):
                 with open('../Proxies_Pool.json', 'r', encoding='utf-8') as fp:

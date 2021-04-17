@@ -1,4 +1,4 @@
-# 异步协程  2.95m
+# 异步协程  2.39m
 
 import asyncio
 import aiohttp
