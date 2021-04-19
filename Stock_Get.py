@@ -70,7 +70,7 @@ def main():
             df = pd.DataFrame(task.result())
             results.append(df)
 
-    # Organize datas
+    # Data processing
     df_result = pd.concat(results)
     df_result = df_result[['f12', 'f14', 'f2', 'f3', 'f4',
                            'f5', 'f6', 'f7', 'f15', 'f16', 'f17', 'f9', 'f23']]
