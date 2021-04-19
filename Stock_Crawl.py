@@ -3,10 +3,8 @@
 # @Author: YoungYuan
 # base_url：http://quote.eastmoney.com/center/gridlist.html#hs_a_board
 
-import json
+
 import math
-import os
-import time
 import pandas as pd
 import requests
 from tqdm import tqdm
