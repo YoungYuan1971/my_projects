@@ -49,9 +49,9 @@ def web_get(page):
 def data_get(page):
     res_dic = web_get(page)
     datas = res_dic['data']['diff']
-    all_datas = pd.DataFrame(datas)
+    df = pd.DataFrame(datas)
 
-    return all_datas
+    return df
 
 
 def main():
