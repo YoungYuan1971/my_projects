@@ -11,6 +11,8 @@ from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
 from concurrent import futures
 
+MAX_WORKS = 30
+
 
 def web_get(page):
     headers = {
@@ -60,7 +62,7 @@ def main():
 
     tasks = []
     results = []
-    with ThreadPoolExecutor(30) as pool:
+    with ThreadPoolExecutor(max_workers=MAX_WORKS) as pool:
         for page in range(1, pages + 1):
             tasks.append(pool.submit(data_get, page))
 
