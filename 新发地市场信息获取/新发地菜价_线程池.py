@@ -11,12 +11,12 @@ import random
 import json
 
 
-def download_one_page(url, proxy):
+def download_one_page(url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_3) "
                       "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
     }
-    response = requests.get(url, headers=headers, proxies=proxy)
+    response = requests.get(url, headers=headers)
     response.encoding = 'utf-8'
     html = etree.HTML(response.text)
     trs = html.xpath("//table[@class='hq_table']//tr")
@@ -37,10 +37,8 @@ if __name__ == '__main__':
         tasks = []
         with ThreadPoolExecutor(30) as pool:
             for page in range(1, 101):
-                with open('../Proxies_Pool.json', 'r', encoding='utf-8') as fp:
-                    proxy = random.choice(json.load(fp))
                 url = base_url.format(page)
-                tasks.append(pool.submit(download_one_page, url, proxy))
+                tasks.append(pool.submit(download_one_page, url))
 
             for _ in tqdm(futures.as_completed(tasks), total=len(tasks)):
                 pass
