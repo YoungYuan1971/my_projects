@@ -16,8 +16,8 @@ async def download_one_page(url):
     }
     async with aiofiles.open('新发地菜价_协程.csv', mode='a', encoding='utf-8', newline='') as fin:
         write_data = csv.writer(fin)
-        async with aiohttp.ClientSession(headers=headers) as session:
-            async with session.get(url) as response:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=headers) as response:
                 html = etree.HTML(await response.text())
                 trs = html.xpath("//table[@class='hq_table']//tr")
                 for tr in trs[1:]:
