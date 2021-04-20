@@ -8,8 +8,8 @@ import math
 import pandas as pd
 import requests
 from tqdm import tqdm
-from concurrent.futures import ThreadPoolExecutor
-from concurrent import futures
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
 
 MAX_WORKS = 30
 
@@ -67,7 +67,7 @@ def main():
         for page in range(1, pages + 1):
             tasks.append(pool.submit(data_get, page))
 
-        for task in tqdm(futures.as_completed(tasks), total=len(tasks)):
+        for task in tqdm(as_completed(tasks), total=len(tasks)):
             df = pd.DataFrame(task.result())
             results.append(df)
 
