@@ -75,7 +75,7 @@ def main():
     df_result = pd.concat(results)
     df_result = df_result[['f12', 'f14', 'f2', 'f3', 'f4',
                            'f5', 'f6', 'f7', 'f15', 'f16', 'f17', 'f9', 'f23']]
-    header = ['代码', '股票名称', '股票名称', '涨跌幅', '涨跌额', '成交量/手',
+    header = ['代码', '股票名称', '最新价', '涨跌幅', '涨跌额', '成交量/手',
               '成交额', '振幅', '最高', '最低', '今开', '动态PE', '静态PE']
 
     df_result.to_excel('Stock.xlsx', sheet_name='stock',
