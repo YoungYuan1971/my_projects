@@ -75,23 +75,11 @@ def main():
     df_result = pd.concat(results)
     df_result = df_result[['f12', 'f14', 'f2', 'f3', 'f4',
                            'f5', 'f6', 'f7', 'f15', 'f16', 'f17', 'f9', 'f23']]
-    rename = {
-        'f12': '代码',
-        'f14': '股票名称',
-        'f2': '最新价',
-        'f3': '涨跌幅',
-        'f4': '涨跌额',
-        'f5': '成交量/手',
-        'f6': '成交额',
-        'f7': '振幅',
-        'f15': '最高',
-        'f16': '最低',
-        'f17': '今开',
-        'f9': '动态PE',
-        'f23': '静态PE',
-    }
-    df_result.rename(columns=rename, inplace=True)
-    df_result.to_excel('Stock.xlsx', sheet_name='stock', index=False)
+    header = ['代码', '股票名称', '股票名称', '涨跌幅', '涨跌额', '成交量/手',
+              '成交额', '振幅', '最高', '最低', '今开', '动态PE', '静态PE']
+
+    df_result.to_excel('Stock.xlsx', sheet_name='stock',
+                       header=header, index=False)
 
     print('Download complete!')
 
