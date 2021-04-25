@@ -10,3 +10,4 @@
 ###### 9. 新发地菜价 单线程/线程池/异步协程
 ###### 10. 股票数据获取 Stock Crawl 
 ###### 11. 数据可视化示例 Pyecharts Visualization
+###### 12. 翻译器 Translator
