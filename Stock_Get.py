@@ -50,9 +50,8 @@ def web_get(page):
 def data_get(page):
     res_dic = web_get(page)
     datas = res_dic['data']['diff']
-    df = pd.DataFrame(datas)
 
-    return df
+    return datas
 
 
 def main():
