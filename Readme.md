@@ -11,4 +11,4 @@
 ###### 10. 股票数据获取 Stock Crawl 
 ###### 11. 数据可视化示例 Pyecharts Visualization
 ###### 12. 翻译器 Translator
-###### 13. 词语图 Word Cloud
+###### 13. 词云图 Word Cloud
