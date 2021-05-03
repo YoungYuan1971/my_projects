@@ -51,7 +51,7 @@ def data_get(page):
     res_dic = web_get(page)
     datas = res_dic['data']['diff']
 
-    return datas
+    return datas  # Return a list containing Key-Value pairs
 
 
 def main():
