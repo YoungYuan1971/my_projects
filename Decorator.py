@@ -10,12 +10,12 @@ def pwd(order):
 
 @pwd
 def buy():
-    print('Successful buy!')
+    print('Buy Successful!')
 
 
 @pwd
 def sell():
-    print('Successful sell!')
+    print('Sell Successful!')
 
 
 if __name__ == '__main__':
