@@ -12,3 +12,4 @@
 ###### 11. 数据可视化示例 Pyecharts Visualization
 ###### 12. 翻译器 Translator
 ###### 13. 词云图 Word Cloud
+###### 14. 国内新冠疫情统计 COVID-19
