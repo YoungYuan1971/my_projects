@@ -19,7 +19,7 @@ def main():
 
     bmi_value, status = bmi(height, weight)
 
-    put_text('你的 BMI 值: %.1f，身体状态：%s' % (bmi_value, status))
+    put_text(f'你的 BMI 值：{bmi_value:.1f}，身体状态：{status}')
 
 
 if __name__ == '__main__':
