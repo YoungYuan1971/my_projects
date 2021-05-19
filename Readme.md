@@ -14,3 +14,4 @@
 ###### 13. 词云图 Word Cloud
 ###### 14. 国内新冠疫情统计 COVID-19
 ###### 15. 伪信息生成 Fake Info Generate
+###### 16. 文本转语音 Text2Speech
