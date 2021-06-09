@@ -12,8 +12,8 @@ def func(x):
 
 if __name__ == "__main__":
     start_time = time()
-    result = func(100000000)
+    result = func(1000000000)
     print(result)
     print(time()-start_time)
 
-# 不加速4.80, 加速0.05
+# 不加速48.0, 加速0.10
