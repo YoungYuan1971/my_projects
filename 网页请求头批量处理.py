@@ -15,10 +15,10 @@ Connection: keep-alive
 '''
 
 pattern = r'^(.*?):[\s]*(.*?)$'
-compile = r"'\1': '\2',"
+re_compile = r"'\1': '\2',"
 headers = ""
 
 for line in old_headers.splitlines():
-    headers += (re.sub(pattern, compile, line)) + '\n'
+    headers += (re.sub(pattern, re_compile, line)) + '\n'
 
 print(headers[:-2])
