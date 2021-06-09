@@ -9,9 +9,12 @@ import pandas as pd
 import requests
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
+import random
 
 
 MAX_WORKS = 30
+RANDOM_TIME = random.randint(1, 3)
 
 
 def web_get(page):
@@ -50,6 +53,7 @@ def web_get(page):
 def data_get(page):
     res_dic = web_get(page)
     datas = res_dic['data']['diff']
+    time.sleep(RANDOM_TIME)
 
     return datas  # Return a list containing Key-Value pairs
 
