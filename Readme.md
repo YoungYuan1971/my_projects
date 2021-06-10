@@ -17,3 +17,4 @@
 ###### 16. 文本转语音 Text2Speech
 ###### 17. 键盘记录器 Keyboard Logger
 ###### 18. 请求头批量处理 Request header processing
+###### 19. pip批量更新库
