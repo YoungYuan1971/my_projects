@@ -4,7 +4,7 @@ import datetime
 
 def on_press(key):
     date = datetime.datetime.now()
-    date_format = f'{date.year}-{date.month}-{date.day} {date.hour}:{date.minute}:{date.second}'
+    date_format = date.strftime('%Y-%m-%d %H:%M:%S')
     msg = f'{date_format}--> {key} 被按下\n'
 
     f.write(msg)
