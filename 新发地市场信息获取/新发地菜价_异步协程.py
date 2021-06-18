@@ -14,7 +14,7 @@ async def download_one_page(url):
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_3) "
                       "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
     }
-    async with aiofiles.open('新发地菜价_协程.csv', mode='a', encoding='utf-8', newline='') as fin:
+    async with aiofiles.open('新发地菜价_协程.csv', mode='a', encoding='utf-8-sig', newline='') as fin:
         write_data = csv.writer(fin)
         async with aiohttp.ClientSession() as session:
             async with session.get(url, headers=headers) as response:
@@ -42,7 +42,7 @@ async def main():
 
 if __name__ == '__main__':
     t1 = time.time()
-    with open('新发地菜价_协程.csv', mode='w', encoding='utf-8', newline='') as f:
+    with open('新发地菜价_协程.csv', mode='w', encoding='utf-8-sig', newline='') as f:
         fieldnames = ['品名', '最低价', '平均价', '最高价', '规格', '单位', '发布日期']
         write_header = csv.DictWriter(f, fieldnames=fieldnames)
         write_header.writeheader()
