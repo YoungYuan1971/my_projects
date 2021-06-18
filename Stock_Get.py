@@ -50,7 +50,7 @@ async def web_get(page):
 
 
 async def data_get(page):
-    async with aiofiles.open('Stock.csv', 'a', encoding='utf-8', newline='') as fin:
+    async with aiofiles.open('Stock.csv', 'a', encoding='utf-8-sig', newline='') as fin:
         data_writer = csv.writer(fin)
         
         res_dic = await web_get(page)
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     total = html.json()['data']['total']
     pages = math.ceil(int(total) / 20)
 
-    with open('Stock.csv', 'w', encoding='utf-8', newline='') as f:
+    with open('Stock.csv', 'w', encoding='utf-8-sig', newline='') as f:
         field_name = [
             '代码', '股票名称', '最新价', '涨跌幅', '涨跌额', '成交量/手',
             '成交额', '振幅', '最高', '最低', '今开', '动态PE', '静态PE',
