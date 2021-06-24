@@ -6,7 +6,7 @@ import json
 
 
 def get_code(stock_name):
-    with open('/Users/youngyuan/PythonProjects/数据字典/stock_code.json', mode='r', encoding='utf-8') as f:
+    with open('./stock_code.json', mode='r', encoding='utf-8') as f:
         datas = json.load(f)
     if stock_name not in datas:
         return False
