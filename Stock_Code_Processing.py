@@ -61,7 +61,7 @@ def main():
 
     tasks = []
     results = {}
-    with open('/Users/youngyuan/PythonProjects/数据字典/stock_code.json', 'w', encoding='utf-8') as fin:
+    with open('./stock_code.json', 'w', encoding='utf-8') as fin:
         with ThreadPoolExecutor(30) as pool:
             [tasks.append(pool.submit(data_processing, page)) for page in range(1, pages + 1)]
 
