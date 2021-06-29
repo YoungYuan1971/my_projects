@@ -59,11 +59,10 @@ def main():
     total = html['data']['total']
     pages = math.ceil(int(total) / 50)  # 向上取整
 
-    tasks = []
     results = {}
     with open('./stock_code.json', 'w', encoding='utf-8') as fin:
         with ThreadPoolExecutor(30) as pool:
-            [tasks.append(pool.submit(data_processing, page)) for page in range(1, pages + 1)]
+            tasks = [pool.submit(data_processing, page) for page in range(1, pages + 1)]
 
             [results.update(task.result()) for task in tqdm(as_completed(tasks), total=len(tasks))]
 
