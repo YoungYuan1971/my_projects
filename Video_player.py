@@ -53,7 +53,7 @@ class Application(tk.Tk):  # 继承tkinter类
 
     def video_play(self):
         port = {
-            1: "https://jiexi.380k.com/?url=",
+            1: "http://jx.13tv.top/?url=",
             2: "http://api.13tv.top/jiexi/?url=",
             3: "https://www.1717yun.com/jx/ty.php?url="
             
