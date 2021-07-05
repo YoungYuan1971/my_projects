@@ -52,7 +52,7 @@ async def web_get(page):
 async def data_get(page):
     async with aiofiles.open('Stock.csv', 'a', encoding='utf-8-sig', newline='') as fin:
         data_writer = csv.writer(fin)
-        
+
         res_dic = await web_get(page)
         datas = res_dic['data']['diff']
         for data in datas:
@@ -65,13 +65,10 @@ async def data_get(page):
 
 
 async def main(pages):
-    tasks = []
-    for page in range(1, pages + 1):
-        tasks.append(asyncio.create_task(data_get(page)))
+    tasks = [asyncio.create_task(data_get(page)) for page in range(1, pages + 1)]
 
-    for task in tqdm(asyncio.as_completed(tasks), total=len(tasks)):
-        await task
-
+    [await task for task in tqdm(asyncio.as_completed(tasks), total=len(tasks))]
+        
     await asyncio.wait(tasks)
 
     print('Download complete!')
