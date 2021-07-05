@@ -19,3 +19,4 @@
 ###### 18. 请求头批量处理 Request header processing
 ###### 19. pip批量更新库
 ###### 20. 股票代码整理 整理/匹配模块
+###### 21. 密码生成器 Password Generator
