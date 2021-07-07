@@ -11,7 +11,6 @@ def ocr_run():
     client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
     with open('/Users/youngyuan/PythonProjects/ID.jpeg', 'rb') as fp:
         res = client.basicAccurate(fp.read())
-        addr = ''
         for data in res['words_result']:
             # print(data)
             row = data['words']
