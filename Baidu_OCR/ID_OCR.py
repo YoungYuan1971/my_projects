@@ -5,12 +5,11 @@ from SecretData import BAIDU_Account
 APP_ID = BAIDU_Account['APP_ID']
 API_KEY = BAIDU_Account['API_KEY']
 SECRET_KEY = BAIDU_Account['SECRET_KEY']
-
+CLIENT = AipOcr(APP_ID, API_KEY, SECRET_KEY)
 
 def ocr_run():
-    client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
     with open('/Users/youngyuan/PythonProjects/身份证识别_OCR/身份证/ID_001.jpeg', 'rb') as fp:
-        res = client.basicAccurate(fp.read())
+        res = CLIENT.basicAccurate(fp.read())
         for data in res['words_result']:
             # print(data)
             row = data['words']
