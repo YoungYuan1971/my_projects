@@ -6,7 +6,7 @@ AK = BAIDU_Account['API_KEY']
 SK = BAIDU_Account['SECRET_KEY']
 
 
-def token_get():
+def get_token():
     host = f'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id={AK}&client_secret={SK}'
     response = requests.get(host)
     if response.status_code == 200:
@@ -17,4 +17,4 @@ def token_get():
 
 
 if __name__ == '__main__':
-    print(token_get())
+    print(get_token())
