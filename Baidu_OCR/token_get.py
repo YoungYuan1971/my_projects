@@ -1,9 +1,9 @@
 import requests
-from SecretData import BAIDU_Account
+from SecretData import BAIDU_OCR
 
 # client_id 为官网获取的AK， client_secret 为官网获取的SK
-AK = BAIDU_Account['API_KEY']
-SK = BAIDU_Account['SECRET_KEY']
+AK = BAIDU_OCR['API_KEY']
+SK = BAIDU_OCR['SECRET_KEY']
 
 
 def get_token():
