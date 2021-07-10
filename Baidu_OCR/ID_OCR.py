@@ -21,8 +21,8 @@ def find_all_img():
 def img_ocr(img):
     try:
         with open(img, 'rb') as fp:
-            # res = client.basicAccurate(fp.read())  # 高精度，500次/天
-            res = CLIENT.basicGeneral(fp.read())  # 标准版，50000次/天
+            # res = client.basicAccurate(fp.read())  # 高精度，500次/天/免费
+            res = CLIENT.basicGeneral(fp.read())  # 标准版，50000次/天/免费
             for data in res['words_result']:
                 # print(data)
                 row = data['words']
