@@ -6,11 +6,12 @@ from SecretData import BAIDU_OCR
 APP_ID = BAIDU_OCR['APP_ID']
 API_KEY = BAIDU_OCR['API_KEY']
 SECRET_KEY = BAIDU_OCR['SECRET_KEY']
-CLIENT = AipOcr(APP_ID, API_KEY, SECRET_KEY)  # 传递用户信息并实例化对象
+CLIENT = AipOcr(
+    appId=APP_ID, apiKey=API_KEY, secretKey=SECRET_KEY)  # 传递鉴权信息并实例化对象
 
 
 def find_all_img():
-    base_path = '身份证/'
+    base_path = './身份证/'
     for root, _, fs in os.walk(base_path):
         for f in fs:
             if f.endswith(('.jpeg', '.jpg', '.png')):
@@ -52,7 +53,7 @@ def img_ocr(img):
             return data_info
 
     except:
-        fail_path = 'Fail/'
+        fail_path = './Fail/'
         if not os.path.exists(fail_path):
             os.mkdir(fail_path)
         os.system(f'mv {img} {fail_path}/')  # 将识别失败的文件转移到统一目录下
