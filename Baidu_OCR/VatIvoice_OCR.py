@@ -19,7 +19,7 @@ def find_all_img():
 
 
 def get_data(img):
-    datas = CLIENT.vatInvoice(img)
+    datas = CLIENT.vatInvoice(img)  # 增值税发票识别  500次/天/免费
     datas = datas['words_result']
 
     return datas
