@@ -20,4 +20,4 @@
 ###### 19. pip批量更新库
 ###### 20. 股票代码整理 整理/匹配模块
 ###### 21. 密码生成器 Password Generator
-###### 22. 百度OCR BAIDU_OCR
+###### 22. 百度OCR ID_OCR/VatInvoice_OCR
