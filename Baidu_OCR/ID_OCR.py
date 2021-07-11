@@ -74,7 +74,7 @@ def main():
 
     df = pd.DataFrame(datas)
     df.to_excel('./ID.xlsx', index=False)
-    print('识别完成！')
+    print('识别完成，数据写入[ID.xlsx]文件中！')
 
 
 if __name__ == '__main__':
