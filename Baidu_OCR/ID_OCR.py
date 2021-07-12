@@ -53,7 +53,7 @@ def img_ocr(img):
             return data_info
 
     except:
-        fail_path = './Fail/'
+        fail_path = './ID_Fail/'
         if not os.path.exists(fail_path):
             os.mkdir(fail_path)
         os.system(f'mv {img} {fail_path}/')  # 将识别失败的文件转移到统一目录下
