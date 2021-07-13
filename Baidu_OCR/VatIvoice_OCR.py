@@ -11,11 +11,11 @@ CLIENT = AipOcr(APP_ID, API_KEY, SECRET_KEY)
 
 
 def find_all_img():
-    base_path = './Invoice/'
+    base_path = 'Invoice'
     for root, _, fs in os.walk(base_path):
         for f in fs:
             if f.endswith(('.jpeg', '.jpg', '.png')):
-                yield root + f
+                yield root + '/' + f
 
 
 def get_data(img):
