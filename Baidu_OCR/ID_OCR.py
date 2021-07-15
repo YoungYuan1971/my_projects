@@ -6,12 +6,11 @@ from SecretData import BAIDU_OCR
 APP_ID = BAIDU_OCR['APP_ID']
 API_KEY = BAIDU_OCR['API_KEY']
 SECRET_KEY = BAIDU_OCR['SECRET_KEY']
-CLIENT = AipOcr(
-    appId=APP_ID, apiKey=API_KEY, secretKey=SECRET_KEY)  # 传递鉴权信息并实例化对象
+# 传递鉴权信息并实例化对象
+CLIENT = AipOcr(appId=APP_ID, apiKey=API_KEY, secretKey=SECRET_KEY)
 
 
-def find_all_img():
-    base_path = '身份证'
+def find_all_img(base_path):
     for root, _, fs in os.walk(base_path):
         for f in fs:
             if f.endswith(('.jpeg', '.jpg', '.png')):
@@ -63,7 +62,8 @@ def img_ocr(img):
 
 
 def main():
-    imgs = find_all_img()
+    base_path = '身份证'
+    imgs = find_all_img(base_path)
     datas = []
     for img in imgs:
         print(f'正在识别{img}......')
