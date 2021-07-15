@@ -10,8 +10,7 @@ SECRET_KEY = BAIDU_OCR['SECRET_KEY']
 CLIENT = AipOcr(APP_ID, API_KEY, SECRET_KEY)
 
 
-def find_all_img():
-    base_path = 'Invoice'
+def find_all_img(base_path):
     for root, _, fs in os.walk(base_path):
         for f in fs:
             if f.endswith(('.jpeg', '.jpg', '.png')):
@@ -61,7 +60,8 @@ def parser_data(datas):
 
 
 def main():
-    imgs = find_all_img()
+    base_path = 'Invoice'
+    imgs = find_all_img(base_path)
     results = []
     try:
         for img in imgs:
