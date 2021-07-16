@@ -62,7 +62,7 @@ def img_ocr(img):
 
 
 def main():
-    base_path = '身份证'
+    base_path = 'ID_Card'
     imgs = find_all_img(base_path)
     datas = []
     for img in imgs:
