@@ -24,7 +24,7 @@ async def download(url):
 async def main():
     tasks = []
     for url in urls:
-        tasks.append(asyncio.create_task(download(url,)))
+        tasks.append(asyncio.create_task(download(url)))
 
     await asyncio.wait(tasks)
 
