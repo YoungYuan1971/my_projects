@@ -46,15 +46,15 @@ async def download_one_page(page=1):
 async def save_datas(page):
     async with aiofiles.open('新发地菜价_协程.csv', 'a', encoding='utf-8-sig', newline='') as fin:
         writer = csv.writer(fin)
-        html = await download_one_page(page)
-        for data in html['list']:
-            data_info = [
+        datas = await download_one_page(page)
+        for data in datas['list']:
+            data_field = [
                 data['prodCat'], data['prodPcat'], data['prodName'], data['lowPrice'],
                 data['avgPrice'], data['highPrice'], data['specInfo'], data['place'],
                 data['unitInfo'], data['pubDate'][:10],
             ]
 
-            await writer.writerow(data_info)
+            await writer.writerow(data_field)
 
 
 async def main():
