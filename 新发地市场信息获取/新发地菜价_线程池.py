@@ -68,7 +68,7 @@ def main():
     results = []
     with ThreadPoolExecutor(30) as pool:
         tasks = [pool.submit(download_one_page, page)
-                 for page in range(1, 101)]
+                 for page in range(1, 101)]  # pages超过10000页，仅测试100页
 
         [results.extend(datas_processing(task.result())) for task in tqdm(
             futures.as_completed(tasks), total=len(tasks))]

@@ -65,7 +65,7 @@ def main():
     pages = math.ceil(int(html['count'])/20)
     results = []
     for page in tqdm(range(1, 101)):
-        html = download_one_page(page)
+        html = download_one_page(page)  # pages超过10000页，仅测试100页
         results.extend(datas_processing(html))
 
     files = pd.DataFrame(results)

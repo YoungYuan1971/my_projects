@@ -58,11 +58,11 @@ async def save_datas(page):
 
 
 async def main():
-    print('正在下载......')
     tasks = [asyncio.create_task(save_datas(page)) for page in range(1, 101)]
     [await task for task in tqdm(asyncio.as_completed(tasks), total=len(tasks))]
 
     await asyncio.wait(tasks)
+    
     print('下载完成！')
 
 
