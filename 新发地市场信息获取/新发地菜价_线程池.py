@@ -1,4 +1,4 @@
-# 100页 线程池  10.56s
+# 100页 线程池  3.56s
 
 import requests
 import pandas as pd
@@ -43,7 +43,6 @@ def download_one_page(page):
 
 
 def datas_processing(html):
-    result = []
     for data in html['list']:
         data_info = {
             '一级分类': data['prodCat'],
@@ -57,9 +56,8 @@ def datas_processing(html):
             '单位': data['unitInfo'],
             '发布日期': data['pubDate'][:10],
         }
-        result.append(data_info)
 
-    return result
+        yield data_info
 
 
 def main():

@@ -1,4 +1,4 @@
-# 100页 单线程  74.78s
+# 100页 单线程  27.33s
 
 import requests
 import math
@@ -41,7 +41,6 @@ def download_one_page(page=1):
 
 
 def datas_processing(html):
-    result = []
     for data in html['list']:
         data_info = {
             '一级分类': data['prodCat'],
@@ -55,9 +54,7 @@ def datas_processing(html):
             '单位': data['unitInfo'],
             '发布日期': data['pubDate'][:10],
         }
-        result.append(data_info)
-
-    return result
+        yield data_info
 
 
 def main():
@@ -72,7 +69,6 @@ def main():
     files.to_csv('新发地菜价_单线程.csv', index=False, encoding='utf-8-sig')
 
     print('下载完成！')
-    
 
 
 if __name__ == '__main__':
