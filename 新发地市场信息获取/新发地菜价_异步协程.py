@@ -1,4 +1,4 @@
-# 100页 异步协程  6.56s
+# 100页 异步协程  3.50s
 
 import asyncio
 import aiohttp
