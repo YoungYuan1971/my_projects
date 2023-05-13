@@ -20,6 +20,7 @@ def get_tracker(url):
     respones = requests.get(url, headers={"user-agent": ua})
     # 返回码304代表服务端已经执行了GET，但文件未变化；返回码200代表正常的服务器内容
     if respones.status_code == 304 or respones.status_code == 200:
+        print(f"服务器返回码：{respones.status_code}")
         result = re.sub(r"\n[\s| ]*\n", ',', respones.text)
 
         return result
