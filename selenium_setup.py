@@ -24,7 +24,7 @@ class BrowserSetup:
     def __init__(self):
         self.cookies_lst = []
         self.service = Service(
-            executable_path='../Misc/Browser drive/chromedriver')
+            executable_path='chromedriver')
         # 设置规避网站检测
         self.option = Options()
         self.option.add_argument(
