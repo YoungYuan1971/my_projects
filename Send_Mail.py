@@ -25,7 +25,7 @@ txt_part = MIMEText(text_content, 'plain', encoding)  # 邮件主体内容
 
 with open('Stock.csv', 'rb') as f:
     att_content = f.read()
-att_part = MIMEText(att_content, 'base64', encoding)  # 邮件附件内容
+att_part = MIMEText(att_content, 'base64', encoding)  # 邮件附件内容 # type: ignore
 att_part["Content-Type"] = 'application/octet-stream'  # 对邮件附件的声明
 att_part['Content-Disposition'] = 'attachment; filename="Stock.csv"'  # 对邮件附件的声明
 
