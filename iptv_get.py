@@ -1,4 +1,5 @@
 import requests
+import time
 
 url = "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/global.m3u"
 headers = {
@@ -18,4 +19,5 @@ res = requests.get(url, headers=headers)
 with open("iptv.m3u", mode='w', encoding='utf-8') as f:
     f.write(res.text)
 
-print("下载成功！")
+update_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+print(f"于{update_time}...下载成功！")
