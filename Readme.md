@@ -33,4 +33,4 @@
 ###### 31. [获取网站图标](./Get_site_icon.py) Get site icon
 ###### 32. [获取并更新btTracker](./Aria2_BT_tracker.py) Aria2_BT_tracker
 ###### 33. ~~PDF_2_DOCX~~
-###### 34. [获取iptv信息](./iptv_get.py) iptv_get
+###### 34. [获取iptv信息](./iptv_get.py) 用于青龙面板的iptv_get脚本
