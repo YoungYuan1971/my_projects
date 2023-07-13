@@ -100,7 +100,6 @@ if __name__ == '__main__':
 
     pages = math.ceil(html_first_page['data']['total'] / 20)
 
-
     with open("stock.csv", "w") as fin:
         field_name = ['代码', '名称', '最新价', '涨跌幅', '涨跌额', '成交量(手)', '成交额', '振幅',
                       '最高价', '最低价', '今开', '昨收', '量比', '换手率', '市盈率(动态)', '市净率']
