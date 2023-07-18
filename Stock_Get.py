@@ -14,35 +14,36 @@ import requests
 from tqdm import tqdm
 
 headers = {
+    'Accept': '*/*',
+    'Accept-Encoding': 'gzip, deflate',
+    'Accept-Language': 'zh-TW,zh;q=0.9,zh-CN;q=0.8',
+    'Cache-Control': 'no-cache',
     'DNT': '1',
-    'Host': '83.push2.eastmoney.com',
-    'Referer': 'https://quote.eastmoney.com/',
-    'sec-ch-ua': '"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"macOS"',
-    'Sec-Fetch-Dest': 'script',
-    'Sec-Fetch-Mode': 'no-cors',
-    'Sec-Fetch-Site': 'same-site',
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
+    'Host': '20.push2.eastmoney.com',
+    'Pragma': 'no-cache',
+    'Proxy-Connection': 'keep-alive',
+    'Referer': 'http://quote.eastmoney.com/center/gridlist.html',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
 }
 
 
 async def html_get(page, session):
-    url = 'https://63.push2.eastmoney.com/api/qt/clist/get'
+    # url = 'https://63.push2.eastmoney.com/api/qt/clist/get'
+    url = 'http://20.push2.eastmoney.com/api/qt/clist/get'
     params = {
         # 'cb': 'jQuery112402374539779714402_1637721974443',
-        'pn': str(page),
+        # 'cb': 'jQuery112407673310984172019_1689675729359',
+        'pn': '1',
         'pz': '20',
         'po': '1',
         'np': '1',
         'ut': 'bd1d9ddb04089700cf9c27f6f7426281',
         'fltt': '2',
         'invt': '2',
+        'wbp2u': '|0|0|0|web',
         'fid': 'f3',
         'fs': 'm:0 t:6,m:0 t:80,m:1 t:2,m:1 t:23,m:0 t:81 s:2048',
-        'fields': 'f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f12,f13,f14,f15,f16,f17,f18,f20,f21,f23,f24,f25,f22,f11,f62,f128,'
-                  'f136,f115,f152',
-        # '_': '1637721974505',
+        'fields': 'f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f12,f13,f14,f15,f16,f17,f18,f20,f21,f23,f24,f25,f22,f11,f62,f128,f136,f115,f152',
     }
 
     # async with aiohttp.ClientSession() as session:
@@ -93,11 +94,7 @@ async def main(pages):
 
 
 if __name__ == '__main__':
-    base_url = "https://83.push2.eastmoney.com/api/qt/clist/get?pn=1&pz=20&po=1&np=1" \
-               "&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&wbp2u=3323094401493896|0|1|0|web" \
-               "&fid=f3&fs=m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23,m:0+t:81+s:2048" \
-               "&fields=f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f12,f13,f14,f15,f16,f17,f18,f20,f21," \
-               "f23,f24,f25,f22,f11,f62,f128,f136,f115,f152&_=1672038419597"
+    base_url = "http://20.push2.eastmoney.com/api/qt/clist/get?pn=1&pz=20&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&wbp2u=|0|0|0|web&fid=f3&fs=m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23,m:0+t:81+s:2048&fields=f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f12,f13,f14,f15,f16,f17,f18,f20,f21,f23,f24,f25,f22,f11,f62,f128,f136,f115,f152"
     html_first_page = requests.get(url=base_url, headers=headers).json()
 
     pages = math.ceil(html_first_page['data']['total'] / 20)
