@@ -27,7 +27,7 @@ headers = {
 }
 
 
-async def html_get(page, session):
+async def html_get(page):
     url = 'http://20.push2.eastmoney.com/api/qt/clist/get'
     params = {
         'pn': '1',
@@ -43,49 +43,49 @@ async def html_get(page, session):
         'fields': 'f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f12,f13,f14,f15,f16,f17,f18,f20,f21,f23,f24,f25,f22,f11,f62,f128,f136,f115,f152',
     }
 
-    async with session.get(url=url, headers=headers, params=params) as response:
-        return await response.json()
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url=url, headers=headers, params=params) as response:
+            return await response.json()
 
 
-async def data_get(page, session, fp):
-    html = await html_get(page, session)
+async def data_get(page):
+    html = await html_get(page)
     datas = html['data']['diff']
 
-    writer = csv.writer(fp)
+    async with aiofiles.open("stock.csv", "a", newline="") as fp:
+        writer = csv.writer(fp)
 
-    for data in datas:
-        data_info = [
-            data['f12'],
-            data['f14'],
-            data['f2'],
-            data['f3'],
-            data['f4'],
-            data['f5'],
-            data['f6'],
-            data['f7'],
-            data['f15'],
-            data['f16'],
-            data['f17'],
-            data['f18'],
-            data['f10'],
-            data['f8'],
-            data['f9'],
-            data['f23'],
-        ]
-        await writer.writerow(data_info)
+        for data in datas:
+            data_info = [
+                data.get('f12', ''),
+                data.get('f14', ''),
+                data.get('f2', ''),
+                data.get('f3', ''),
+                data.get('f4', ''),
+                data.get('f5', ''),
+                data.get('f6', ''),
+                data.get('f7', ''),
+                data.get('f15', ''),
+                data.get('f16', ''),
+                data.get('f17', ''),
+                data.get('f18', ''),
+                data.get('f10', ''),
+                data.get('f8', ''),
+                data.get('f9', ''),
+                data.get('f23', ''),
+            ]
+            await writer.writerow(data_info)
 
 
 async def main(pages):
-    async with aiohttp.ClientSession() as session:
-        async with aiofiles.open("stock.csv", "a", newline="") as fp:
-            tasks = []
-            for page in range(1, pages + 1):
-                tasks.append(asyncio.create_task(data_get(page, session, fp)))
+    tasks = []
+    for page in range(1, pages + 1):
+        tasks.append(asyncio.create_task(data_get(page)))
 
-            for task in tqdm(asyncio.as_completed(tasks), total=len(tasks)):
-                await task
+    for task in tqdm(asyncio.as_completed(tasks), total=len(tasks)):
+        await task
 
-            await asyncio.wait(tasks)
+    await asyncio.wait(tasks)
 
 
 if __name__ == '__main__':
