@@ -9,7 +9,7 @@
 ###### 7. ~~Python加速器 Python Accelerator~~
 ###### 8. [异步测试](./Test_async.py) Test_async
 ###### 9. [新发地菜价](./%E6%96%B0%E5%8F%91%E5%9C%B0%E5%B8%82%E5%9C%BA%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96) 单线程/线程池/异步协程/进度条实现
-###### 10. [股票数据获取](./Stock_Get.py) Stock Crawl
+###### 10. [股票数据获取_异步协程](./Stock_Get_async.py) Stock Crawl 异步协程
 ###### 11. [数据可视化示例](./Pyecharts_Visualization.ipynb) Pyecharts Visualization
 ###### 12. [翻译器](./Translator.py) Translator
 ###### 13. [词云图](./%E8%AF%8D%E4%BA%91%E5%9B%BE%E7%9A%84%E5%AE%9E%E7%8E%B0) Word Cloud
@@ -34,3 +34,4 @@
 ###### 32. [获取并更新btTracker](./Aria2_BT_tracker.py) Aria2_BT_tracker
 ###### 33. ~~PDF_2_DOCX~~
 ###### 34. [获取iptv信息](./iptv_get.py) 用于青龙面板的iptv_get脚本
+###### 35. [股票数据获取_线程池](./Stock_Get_thread.py) Stock Crawl 线程池
