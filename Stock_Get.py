@@ -28,11 +28,8 @@ headers = {
 
 
 async def html_get(page, session):
-    # url = 'https://63.push2.eastmoney.com/api/qt/clist/get'
     url = 'http://20.push2.eastmoney.com/api/qt/clist/get'
     params = {
-        # 'cb': 'jQuery112402374539779714402_1637721974443',
-        # 'cb': 'jQuery112407673310984172019_1689675729359',
         'pn': '1',
         'pz': '20',
         'po': '1',
@@ -46,7 +43,6 @@ async def html_get(page, session):
         'fields': 'f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f12,f13,f14,f15,f16,f17,f18,f20,f21,f23,f24,f25,f22,f11,f62,f128,f136,f115,f152',
     }
 
-    # async with aiohttp.ClientSession() as session:
     async with session.get(url=url, headers=headers, params=params) as response:
         return await response.json()
 
@@ -55,7 +51,6 @@ async def data_get(page, session, fp):
     html = await html_get(page, session)
     datas = html['data']['diff']
 
-    # async with aiofiles.open("stock.csv", "a", newline="") as fp:
     writer = csv.writer(fp)
 
     for data in datas:
