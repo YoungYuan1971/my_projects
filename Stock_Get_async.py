@@ -27,7 +27,7 @@ headers = {
 }
 
 
-async def html_get(page):
+async def html_get(page, session):
     url = 'http://20.push2.eastmoney.com/api/qt/clist/get'
     params = {
         'pn': '1',
@@ -43,49 +43,52 @@ async def html_get(page):
         'fields': 'f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f12,f13,f14,f15,f16,f17,f18,f20,f21,f23,f24,f25,f22,f11,f62,f128,f136,f115,f152',
     }
 
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url=url, headers=headers, params=params) as response:
-            return await response.json()
+    # async with aiohttp.ClientSession() as session:
+    async with session.get(url=url, headers=headers, params=params) as response:
+        return await response.json()
 
 
-async def data_get(page):
-    html = await html_get(page)
+async def data_get(page, session, fp):
+    html = await html_get(page, session)
     datas = html['data']['diff']
 
-    async with aiofiles.open("stock.csv", "a", newline="") as fp:
-        writer = csv.writer(fp)
+    # async with aiofiles.open("stock_info.csv", "a", newline="") as fp:
+    writer = csv.writer(fp)
 
-        for data in datas:
-            data_info = [
-                data.get('f12', ''),
-                data.get('f14', ''),
-                data.get('f2', ''),
-                data.get('f3', ''),
-                data.get('f4', ''),
-                data.get('f5', ''),
-                data.get('f6', ''),
-                data.get('f7', ''),
-                data.get('f15', ''),
-                data.get('f16', ''),
-                data.get('f17', ''),
-                data.get('f18', ''),
-                data.get('f10', ''),
-                data.get('f8', ''),
-                data.get('f9', ''),
-                data.get('f23', ''),
-            ]
-            await writer.writerow(data_info)
+    for data in datas:
+        data_info = [
+            data.get('f12', ''),
+            data.get('f14', ''),
+            data.get('f2', ''),
+            data.get('f3', ''),
+            data.get('f4', ''),
+            data.get('f5', ''),
+            data.get('f6', ''),
+            data.get('f7', ''),
+            data.get('f15', ''),
+            data.get('f16', ''),
+            data.get('f17', ''),
+            data.get('f18', ''),
+            data.get('f10', ''),
+            data.get('f8', ''),
+            data.get('f9', ''),
+            data.get('f23', ''),
+        ]
+        await writer.writerow(data_info)
 
 
 async def main(pages):
     tasks = []
-    for page in range(1, pages + 1):
-        tasks.append(asyncio.create_task(data_get(page)))
+    async with aiohttp.ClientSession() as session:
+        async with aiofiles.open("stock_info.csv", "a", newline="\n") as fp:
+        
+            for page in range(1, pages + 1):
+                tasks.append(asyncio.create_task(data_get(page, session, fp)))
 
-    for task in tqdm(asyncio.as_completed(tasks), total=len(tasks)):
-        await task
+            for task in tqdm(asyncio.as_completed(tasks), total=len(tasks)):
+                await task
 
-    await asyncio.wait(tasks)
+            await asyncio.wait(tasks)
 
 
 if __name__ == '__main__':
@@ -98,7 +101,7 @@ if __name__ == '__main__':
 
     pages = math.ceil(html_first_page['data']['total'] / 20)
 
-    with open("stock.csv", "w") as fin:
+    with open("stock_info.csv", "w", newline="") as fin:
         field_name = ['代码', '名称', '最新价', '涨跌幅', '涨跌额', '成交量(手)', '成交额', '振幅',
                       '最高价', '最低价', '今开', '昨收', '量比', '换手率', '市盈率(动态)', '市净率']
         header_writer = csv.DictWriter(fin, field_name)
