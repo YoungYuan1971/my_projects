@@ -37,3 +37,5 @@ for data in datas['data']['diff']:
 
 df = pd.DataFrame(result)
 df.to_csv('stock.csv', index=False)
+
+print("数据信息已下载完成！")
