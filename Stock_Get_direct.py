@@ -8,28 +8,29 @@ headers = {
     'Referer': 'http://quote.eastmoney.com/center/gridlist.html',
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
 }
-res = requests.get(url, headers=headers)
-datas = res.json()
+
+response = requests.get(url, headers=headers)
+datas = response.json()
 
 result = []
 for data in datas['data']['diff']:
     data_info = {
-        '代码': data.get('f12', ''),
-        '名称': data.get('f14', ''),
-        '最新价': data.get('f2', ''),
-        '涨跌幅': data.get('f3', ''),
-        '涨跌额': data.get('f4', ''),
-        '成交量(手)': data.get('f5', ''),
-        '成交额': data.get('f6', ''),
-        '振幅': data.get('f7', ''),
-        '最高价': data.get('f15', ''),
-        '最低价': data.get('f16', ''),
-        '今开': data.get('f17', ''),
-        '昨收': data.get('f18', ''),
-        '量比': data.get('f10', ''),
-        '换手率': data.get('f8', ''),
-        '市盈率(动态)': data.get('f9', ''),
-        '市净率': data.get('f23', '')
+        '代码': data['f12'],
+        '名称': data['f14'],
+        '最新价': data['f2'],
+        '涨跌幅': data['f3'],
+        '涨跌额': data['f4'],
+        '成交量(手)': data['f5'],
+        '成交额': data['f6'],
+        '振幅': data['f7'],
+        '最高价': data['f15'],
+        '最低价': data['f16'],
+        '今开': data['f17'],
+        '昨收': data['f18'],
+        '量比': data['f10'],
+        '换手率': data['f8'],
+        '市盈率(动态)': data['f9'],
+        '市净率': data['f23']
     }
     result.append(data_info)
 
