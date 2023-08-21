@@ -1,5 +1,6 @@
-import requests
 import time
+import requests
+
 
 # Base_url: https://github.com/fanmingming/live/
 
@@ -16,7 +17,12 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5.1 Safari/605.1.15',
 }
 
-res = requests.get(url, headers=headers)
+while True:
+    res = requests.get(url, headers=headers)
+    if res.status_code == 200:
+        break
+    else:
+        time.sleep(1)
 
 with open("iptv.m3u", mode='w', encoding='utf-8') as f:
     f.write(res.text)
