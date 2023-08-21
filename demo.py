@@ -8,7 +8,7 @@ class Application:
         st.set_page_config(page_title="Detail of A-Share", layout="wide")
 
         self.df = pd.read_csv(
-            "https://gitee.com/youngyuan1971/my_projects/raw/master/stock.csv")
+            "https://raw.githubusercontent.com/YoungYuan1971/my_projects/master/stock.csv")
 
         # 两种方法：
         # 1. 遍历所有列数据，将含有“-”的对应行删除
@@ -29,9 +29,9 @@ class Application:
         st.write(
             '''
                 <h4 style="text-align:center">Daily market of A-Share</h4><br>
-            ''', 
+            ''',
             unsafe_allow_html=True)
-            
+
         userSelect = st.sidebar.selectbox("Please select:", option_list)
 
         if userSelect == option_list[1]:
