@@ -6,14 +6,14 @@ import requests
 
 url = "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/global.m3u"
 headers = {
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'Accept-Language': 'zh-CN,zh-Hans;q=0.9',
-    'Connection': 'keep-alive',
-    'Host': 'raw.githubusercontent.com',
-    'Sec-Fetch-Dest': 'document',
-    'Sec-Fetch-Mode': 'navigate',
-    'Sec-Fetch-Site': 'none',
+    # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    # 'Accept-Encoding': 'gzip, deflate, br',
+    # 'Accept-Language': 'zh-CN,zh-Hans;q=0.9',
+    # 'Connection': 'keep-alive',
+    # 'Host': 'raw.githubusercontent.com',
+    # 'Sec-Fetch-Dest': 'document',
+    # 'Sec-Fetch-Mode': 'navigate',
+    # 'Sec-Fetch-Site': 'none',
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5.1 Safari/605.1.15',
 }
 
