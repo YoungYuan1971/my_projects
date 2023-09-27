@@ -3,8 +3,9 @@ import requests
 
 
 # Base_url: https://github.com/fanmingming/live/
+# source_url: https://live.fanmingming.com/tv/m3u/global.m3u
 
-url = "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/global.m3u"
+url = "https://live.fanmingming.com/tv/m3u/global.m3u"
 headers = {
     # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     # 'Accept-Encoding': 'gzip, deflate, br',
