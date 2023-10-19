@@ -5,7 +5,7 @@ from urllib.request import urlretrieve
 
 path = './SignDesign'
 base_url = 'http://www.kachayv.cn/'
-
+ 
 
 def get_html(name, type):
     headers = {
