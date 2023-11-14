@@ -30,7 +30,7 @@ headers = {
 async def html_get(page):
     url = 'http://20.push2.eastmoney.com/api/qt/clist/get'
     params = {
-        'pn': '1',
+        'pn': page,
         'pz': '20',
         'po': '1',
         'np': '1',
