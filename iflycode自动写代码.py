@@ -6,7 +6,6 @@
 @Contact :   young_yuan@hotmail.com
 @License :   (C)Copyright 2022-2031, YoungYuan
 '''
-
 '''
 此应用是利用iflycode自动生成的代码
 prompt：
@@ -34,12 +33,9 @@ response:
 然后，将上述三个步骤粘贴到编辑器，自动完成
 '''
 
-
-
 import cv2
 import mediapipe as mp
 import numpy as np
-
 
 # 打开摄像头进行实时视频流的捕获，并实时显示出来
 def video_capture():
@@ -71,9 +67,8 @@ def video_capture():
     cap.release()
     cv2.destroyAllWindows()
 
+
 # 测量手部区域上的关键点和边缘，并呈现关键点
-
-
 def detect_and_draw_hand_landmarks(frame):
     mp_hands = mp.solutions.hands
     hands = mp_hands.Hands(static_image_mode=False,
@@ -114,8 +109,8 @@ def draw_palm_points(frame, hand_landmarks, history_palm_points=[]):
         pass
     else:
         for i in range(1, len(history_palm_points)):
-            cv2.line(frame, tuple(history_palm_points[i-1][:2]), tuple(history_palm_points[i][:2]), (0, 0, 255), 5) 
-
+            cv2.line(frame, tuple(
+                history_palm_points[i-1][:2]), tuple(history_palm_points[i][:2]), (0, 0, 255), 5)
 
 
 # 调用video_capture函数
