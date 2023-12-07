@@ -36,3 +36,4 @@
 ###### 34. [获取iptv信息](./iptv_get.py) 用于青龙面板的iptv_get脚本
 ###### 35. [股票数据获取_线程池](./Stock_Get_thread.py) Stock Crawl 线程池
 ###### 36. [股票数据获取_直接暴力](./Stock_Get_direct.py) Stock Crawl 直接快捷
+###### 37. [iflycode自动写代码](./iflycode自动写代码.py) iflycode自动写代码(屏幕捕获手势画轨迹)
