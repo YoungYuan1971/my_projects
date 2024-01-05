@@ -2,10 +2,9 @@ import time
 import requests
 
 
-# Base_url: https://github.com/fanmingming/live/
-# source_url: https://live.fanmingming.com/tv/m3u/global.m3u
+# https://github.com/iptv-org/iptv?tab=readme-ov-file#playlists
 
-url = "https://live.fanmingming.com/tv/m3u/global.m3u"
+url = "https://iptv-org.github.io/iptv/index.m3u"
 headers = {
     # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     # 'Accept-Encoding': 'gzip, deflate, br',
