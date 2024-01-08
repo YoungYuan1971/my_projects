@@ -25,26 +25,26 @@ from time import sleep
 class BrowserSetup:
     def __init__(self):
         self.cookies_lst = []
-        self.service = Service(
-            executable_path='chromedriver')
+        # self.service = Service(
+        #     executable_path='chromedriver')
         # 设置规避网站检测
         self.option = Options()
         self.option.add_argument(
             "--disable-blink-features=AutomationControlled")
+        # 阻止浏览器自动关闭
+        self.option.add_experimental_option("detach", True)
 
     def without_header(self):
         # 设置无头浏览器，即无可视化界面的操作
         self.option.add_argument('--headless')
         self.option.add_argument('--disable-gpu')
         # 创建浏览器对象
-        web = webdriver.Chrome(
-            service=self.service, options=self.option)
+        web = webdriver.Chrome(options=self.option)
         web.implicitly_wait(10)  # 设置隐式等待时间
         return web
 
     def with_header(self):
-        web = webdriver.Chrome(
-            service=self.service, options=self.option)
+        web = webdriver.Chrome(options=self.option)
         web.implicitly_wait(10)  # 设置隐式等待时间
         return web
 
