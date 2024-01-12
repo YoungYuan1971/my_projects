@@ -4,7 +4,7 @@ import requests
 
 # https://github.com/iptv-org/iptv?tab=readme-ov-file#playlists
 
-url = "https://iptv-org.github.io/iptv/index.m3u"
+url = "https://iptv-org.github.io/iptv/index.country.m3u"
 headers = {
     # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     # 'Accept-Encoding': 'gzip, deflate, br',
