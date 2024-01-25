@@ -25,6 +25,7 @@ from time import sleep
 class BrowserSetup:
     def __init__(self):
         self.cookies_lst = []
+        # 设置chromedriver可执行路径，如果是环境变量，则无需设置
         # self.service = Service(
         #     executable_path='chromedriver')
         # 设置规避网站检测
