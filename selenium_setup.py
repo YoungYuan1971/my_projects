@@ -65,13 +65,15 @@ class BrowserSetup:
 
 
 if __name__ == '__main__':
-    app = BrowserSetup()
-    chrome = app.web(visible=True)
-    chrome.maximize_window()
     url = "https://www.baidu.com"
-    chrome.get(url)
-    cookies_list = chrome.get_cookies()
-    cookies = app.get_cookies(cookies_lst=cookies_list)
-    print(cookies)
-    sleep(5)
-    chrome.quit()
+
+    app = BrowserSetup()
+    with app.web(visible=True) as chrome:
+        chrome.maximize_window()
+        chrome.implicitly_wait(10)
+
+        chrome.get(url)
+        cookies_list = chrome.get_cookies()
+        cookies = app.get_cookies(cookies_lst=cookies_list)
+        print(cookies)
+        sleep(5)
