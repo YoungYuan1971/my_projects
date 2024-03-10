@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         屏蔽今日头条置顶文章
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.3.1
 // @description  我的浏览器我做主
 // @author       YoungYuan
 // @match        *://www.toutiao.com/*
