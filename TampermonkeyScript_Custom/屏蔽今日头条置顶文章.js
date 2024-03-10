@@ -18,6 +18,9 @@
         .feed-card-wrapper.feed-card-article-wrapper.sticky-cell{
             display: none
         }
+        .feed-five-wrapper{
+            display: none
+        }
     `
     GM_addStyle(css)
 
