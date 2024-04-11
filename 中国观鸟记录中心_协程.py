@@ -61,9 +61,6 @@ async def save_data(page, session):
         result = await send_request(page, session)
         decrypted_data = json.loads(get_decryptData(result['data']))
         for row in decrypted_data:
-            if not row:
-                continue
-
             data_field = [
                 row.get('name'),
                 row.get('timebegin'),
