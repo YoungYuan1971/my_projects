@@ -91,10 +91,13 @@ async def main(max_pages):
 
 
 if __name__ == '__main__':
-    max_pages = input("请输入要爬取的页数：").strip()
-    if not max_pages.isdigit():
-        print("请输入数字!")
-        exit()
+    while True:
+        max_pages = input("请输入要爬取的页数：").strip()
+        if not max_pages.isdigit():
+            print("请输入数字!")
+        else:
+            break
+
     print("正在采集数据，请稍后...")
     with open('中国观鸟记录中心.csv', mode='w', encoding='utf-8-sig', newline='') as f:
         fieldnames = [
