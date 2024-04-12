@@ -10,6 +10,8 @@ from tqdm import tqdm
 with open('中国观鸟记录中心_加解密.js', 'r', encoding='utf-8') as f:
     ctx = execjs.compile(f.read())
 
+url = 'https://api.birdreport.cn/front/activity/search'
+
 headers = {
     'Accept': 'application/json, text/javascript, */*; q=0.01',
     'Accept-Language': 'zh-TW,zh;q=0.9,zh-CN;q=0.8',
@@ -33,25 +35,24 @@ headers = {
 }
 
 
-def get_encryptData(page):
+def get_encryptedData(page):
     params = f"page={page}&limit=20"
     return ctx.call('encryptData', params)
 
 
-def get_decryptData(encryptedData):
+def get_decryptedData(encryptedData):
     return ctx.call('decryptData', encryptedData)
 
 
 async def send_request(page, session):
-    encrypted_data = get_encryptData(page)
+    encrypted_data = get_encryptedData(page)
     headers.update({
         'requestId': encrypted_data['requestId'],
         'sign': encrypted_data['sign'],
         'timestamp': str(encrypted_data['timestamp'])
     })
     data = encrypted_data['payload']
-
-    async with session.post('https://api.birdreport.cn/front/activity/search', headers=headers, data=data) as response:
+    async with session.post(url=url, headers=headers, data=data) as response:
         return await response.json()
 
 
@@ -59,7 +60,7 @@ async def save_data(page, session):
     async with aiofiles.open('中国观鸟记录中心.csv', 'a', encoding='utf-8-sig', newline='') as fin:
         writer = csv.writer(fin)
         result = await send_request(page, session)
-        decrypted_data = json.loads(get_decryptData(result['data']))
+        decrypted_data = json.loads(get_decryptedData(result['data']))
         for row in decrypted_data:
             data_field = [
                 row.get('name'),
