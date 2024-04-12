@@ -77,15 +77,11 @@ async def save_data(page, session):
 
 
 async def main(max_pages):
-    tasks = []
-
     async with aiohttp.ClientSession() as session:
-        for page in range(1, int(max_pages)+1):
-            tasks.append(asyncio.create_task(
-                save_data(page, session)))
-
-        for task in tqdm(asyncio.as_completed(tasks), total=len(tasks)):
-            await task
+        tasks = []
+        tasks = [asyncio.create_task(save_data(page, session))
+                 for page in range(1, int(max_pages)+1)]
+        [await task for task in tqdm(asyncio.as_completed(tasks), total=len(tasks))]
 
         await asyncio.wait(tasks)
 
