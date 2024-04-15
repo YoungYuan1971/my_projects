@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 '''
-@File    :   极简壁纸 copy.py
+@File    :   极简壁纸.py
 @Time    :   2024/04/15 10:39:47
 @Author  :   YoungYuan 
 @Contact :   young_yuan@hotmail.com
