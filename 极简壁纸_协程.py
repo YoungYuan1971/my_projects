@@ -54,11 +54,7 @@ json_data = {
 
 def get_ciphertext(json_data):
     url = 'https://api.zzzmh.cn/bz/v3/getData'
-    return requests.post(
-        url,
-        headers=headers,
-        json=json_data
-    ).json()
+    return requests.post(url, headers=headers, json=json_data).json()
 
 
 def decrypt_data(ciphertext):
