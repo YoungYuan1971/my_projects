@@ -15,8 +15,8 @@ import requests
 import execjs
 from tqdm import tqdm
 
-path = '极简壁纸'
-if not os.path.exists(path):
+
+if not os.path.exists(path := '极简壁纸'):
     os.mkdir(path)
 
 with open('极简壁纸_逆向.js', 'r', encoding='utf-8') as f:
@@ -73,7 +73,8 @@ async def save_img(img_url, session):
 
 
 async def main():
-    for page in tqdm(range(1, 11)):
+    pages = int(input('请输入要爬取的页数：').strip())
+    for page in tqdm(range(1, pages+1)):
         json_data['current'] = page
         ciphertext = get_ciphertext(json_data)['result']
         plaintext = decrypt_data(ciphertext)
