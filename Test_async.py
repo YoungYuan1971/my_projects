@@ -12,6 +12,7 @@ urls = [
 ]
 
 
+# 异步协程获取数据：response.read() 获取二进制字节流；response.text() 获取字符串；response.json() 获取JSON格式数据
 async def download(url, session):
     name = url.split('/')[-1]
     async with session.get(url) as reponse:
