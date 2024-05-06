@@ -13,19 +13,22 @@ urls = [
 
 
 # 异步协程获取数据：response.read() 获取二进制字节流；response.text() 获取字符串；response.json() 获取JSON格式数据
-async def download(url, session):
-    name = url.split('/')[-1]
+async def download(url, num, session):
     async with session.get(url) as reponse:
-        async with aiofiles.open(f'001_{name}.png', mode='wb') as f:
+        async with aiofiles.open(f'00{num+1}.png', mode='wb') as f:
             await f.write(await reponse.read())
-            print(name, 'Download complete!')
+            return f"{url}...Download completed!"
 
 
 async def main():
     async with aiohttp.ClientSession() as session:
         tasks = []
-        for url in urls:
-            tasks.append(asyncio.create_task(download(url, session)))
+        for url_index, url in enumerate(urls):
+            tasks.append(asyncio.create_task(
+                download(url, url_index, session)))
+
+        for t in asyncio.as_completed(tasks):
+            print(await t)
 
         await asyncio.wait(tasks)
 
