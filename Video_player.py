@@ -36,7 +36,7 @@ class Application(tk.Tk):  # 继承tkinter类
         self.entry = tk.Entry(self.frame_2, textvariable=self.url, width=50)
         self.play = tk.Button(self.frame_2, text="播放", font=("微软雅黑", 12),
                               bg="#9E9D9D", width=12, command=self.video_play)
-        self.quite = tk.Button(self.frame_2, text="退出", font=("微软雅黑", 12),
+        self.exit = tk.Button(self.frame_2, text="退出", font=("微软雅黑", 12),
                                bg="#9E9D9D", width=12, command=self.quit)
         # 控件布局之前，需要激活软件空间
         self.frame_1.pack()
@@ -49,7 +49,7 @@ class Application(tk.Tk):  # 继承tkinter类
         self.label.grid(row=0, column=0)
         self.entry.grid(row=0, column=1, columnspan=3)
         self.play.grid(row=1, column=1, padx=10, pady=10)
-        self.quite.grid(row=1, column=2, padx=10, pady=10)
+        self.exit.grid(row=1, column=2, padx=10, pady=10)
 
     def video_play(self):
         port = {
